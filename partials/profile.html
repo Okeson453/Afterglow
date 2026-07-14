@@ -11,11 +11,34 @@
     <div class="stat-card"><div class="num" id="stat-msgs">0</div><div class="lbl">Conversations</div></div>
   </div>
 
+  <!-- UPGRADE SECTION -->
+  <div class="section-header">💎 Membership</div>
+  <div class="settings-list">
+    <div class="settings-item upgrade-banner" id="upgrade-status">
+      <div>
+        <div class="lab">Afterglow Gold</div>
+        <div class="sub" id="plan-status">Free plan · Upgrade to unlock premium</div>
+      </div>
+      <button class="btn btn-primary btn-sm" style="width:auto;" onclick="openUpgradePlans()">Upgrade</button>
+    </div>
+  </div>
+
+  <!-- PROFILE & VERIFICATION SECTION -->
+  <div class="section-header">👤 Profile</div>
   <div class="settings-list">
     <div class="settings-item">
       <div><div class="lab">Get verified</div><div class="sub">Selfie check → trust badge</div></div>
       <button class="btn btn-cyan btn-sm" style="width:auto;" onclick="verifyProfile()">Verify</button>
     </div>
+    <div class="settings-item">
+      <div><div class="lab">Edit profile</div><div class="sub">Update name, bio, photos</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="editProfile()">Edit</button>
+    </div>
+  </div>
+
+  <!-- PRIVACY SECTION -->
+  <div class="section-header">🔒 Privacy & Discovery</div>
+  <div class="settings-list">
     <div class="settings-item">
       <div><div class="lab">Profile visibility</div><div class="sub">Show me in discovery</div></div>
       <button class="toggle on" id="toggle-visible" onclick="toggleSwitch(this)"></button>
@@ -28,20 +51,141 @@
       <div><div class="lab">Show distance</div><div class="sub">Approximate, never exact location</div></div>
       <button class="toggle on" id="toggle-distance" onclick="toggleSwitch(this)"></button>
     </div>
+  </div>
+
+  <!-- SAFETY SECTION -->
+  <div class="section-header">⚠️ Safety & Security</div>
+  <div class="settings-list">
     <div class="settings-item">
       <div><div class="lab">Safety Center</div><div class="sub">Check-in timer, share date details</div></div>
-      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="toast('Safety Center: share your date plan with a trusted contact and set a check-in timer.')">Open</button>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="openSafetyCenter()">Open</button>
     </div>
     <div class="settings-item">
       <div><div class="lab">Blocked accounts</div><div class="sub" id="blocked-count">0 blocked</div></div>
-      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="toast('Blocked list would render here.')">Manage</button>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="viewBlockedList()">Manage</button>
     </div>
     <div class="settings-item">
-      <div><div class="lab">Afterglow Gold</div><div class="sub">Unlimited likes · see who liked you · rewind</div></div>
-      <button class="btn btn-primary btn-sm" style="width:auto;" onclick="toast('Billing flow → Stripe/RevenueCat wires in here.')">Upgrade</button>
+      <div><div class="lab">Change password</div><div class="sub">Update your password</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="changePassword()">Change</button>
     </div>
+  </div>
+
+  <!-- ACCOUNT SECTION -->
+  <div class="section-header">⚙️ Account</div>
+  <div class="settings-list">
+    <div class="settings-item">
+      <div><div class="lab">Payment methods</div><div class="sub" id="payment-status">No payment method added</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="openPaymentSettings()">Manage</button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Notification settings</div><div class="sub">Emails, push notifications</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="openNotifications()">Manage</button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Download your data</div><div class="sub">Export profile & messages</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="downloadData()">Download</button>
+    </div>
+  </div>
+
+  <!-- SUPPORT SECTION -->
+  <div class="section-header">❓ Support</div>
+  <div class="settings-list">
+    <div class="settings-item">
+      <div><div class="lab">Help & FAQ</div><div class="sub">Common questions and issues</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="openHelp()">View</button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Report a problem</div><div class="sub">Send feedback or report abuse</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="reportProblem()">Report</button>
+    </div>
+  </div>
+
+  <!-- LOGOUT SECTION -->
+  <div class="settings-list" style="margin-top:20px;">
     <div class="settings-item">
       <button class="btn btn-danger btn-sm" style="width:100%;" onclick="logout()">Log Out</button>
+    </div>
+  </div>
+</div>
+
+<!-- UPGRADE PLANS MODAL -->
+<div class="modal-overlay" id="modal-upgrade">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Upgrade to Afterglow Gold</h3>
+      <button onclick="closeModal('upgrade')" class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="plan-grid">
+        <div class="plan-card">
+          <div class="plan-name">Free</div>
+          <div class="plan-price">$0/mo</div>
+          <div class="plan-features">
+            <div class="feature">✓ Basic discovery</div>
+            <div class="feature">✓ 10 likes/day</div>
+            <div class="feature">○ See who liked you</div>
+            <div class="feature">○ Unlimited rewrites</div>
+          </div>
+          <button class="btn btn-ghost btn-block" onclick="toast('You are already on Free plan')">Current</button>
+        </div>
+        <div class="plan-card featured">
+          <div class="plan-badge">⭐ Popular</div>
+          <div class="plan-name">Gold</div>
+          <div class="plan-price">$9.99/mo</div>
+          <div class="plan-features">
+            <div class="feature">✓ Unlimited likes</div>
+            <div class="feature">✓ See who liked you</div>
+            <div class="feature">✓ Rewind picks</div>
+            <div class="feature">✓ Hide ads</div>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="selectPlan('gold')">Upgrade to Gold</button>
+        </div>
+        <div class="plan-card">
+          <div class="plan-name">Platinum</div>
+          <div class="plan-price">$19.99/mo</div>
+          <div class="plan-features">
+            <div class="feature">✓ All Gold features</div>
+            <div class="feature">✓ Priority matches</div>
+            <div class="feature">✓ Spotlight boost</div>
+            <div class="feature">✓ Priority support</div>
+          </div>
+          <button class="btn btn-primary btn-block" onclick="selectPlan('platinum')">Upgrade to Platinum</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAYMENT SETTINGS MODAL -->
+<div class="modal-overlay" id="modal-payment">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3>Payment Methods</h3>
+      <button onclick="closeModal('payment')" class="modal-close">✕</button>
+    </div>
+    <div class="modal-body">
+      <div id="payment-methods-list">
+        <div class="empty-state">No payment methods saved</div>
+      </div>
+      <div style="margin-top:20px;">
+        <button class="btn btn-primary btn-block" onclick="addPaymentMethod()">+ Add Payment Method</button>
+      </div>
+      <div style="margin-top:16px; padding:12px; background:rgba(0,255,200,.05); border-radius:8px; font-size:12px; color:var(--text-mid);">
+        💳 Accepts all major credit cards. Secure payments via Stripe.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal-overlay" id="modal-settings">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="settings-title">Settings</h3>
+      <button onclick="closeModal('settings')" class="modal-close">✕</button>
+    </div>
+    <div class="modal-body" id="settings-content">
+      <!-- Content loaded dynamically -->
     </div>
   </div>
 </div>

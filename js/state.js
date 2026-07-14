@@ -11,7 +11,7 @@ const STORAGE_KEY = 'afterglow_state_v1';
 
 function defaultState(){
   return {
-    user: null,        // { id, email, verified, gender, seeking, distance, name, avatar, bio, dob }
+    user: null,        // { id, email, verified, gender, seeking, distance, name, avatar, bio, dob, isPremium, premiumTier, paymentMethod }
     candidates: [],     // discovery queue
     swipesSent: 0,
     matches: [],        // { id, name, avatar, lastMsg, time, unread, messages:[] }
