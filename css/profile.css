@@ -1,13 +1,18 @@
 /* ============ PROFILE (partials/profile.html) ============ */
-#view-profile{ padding:18px 20px 40px; }
-.profile-hero{ text-align:center; margin-bottom:20px; }
-.profile-hero .circ-lg{ width:110px; height:110px; border-radius:50%; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:52px; background:var(--navy-800); border:3px solid var(--gold-bright); }
-.profile-hero h2{ font-size:28px; }
-.profile-hero .verify-line{ font-size:12px; color:var(--cyan); margin-top:4px; }
-.stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:20px 0; }
-.stat-card{ background:var(--navy-800); border-radius:14px; padding:14px; text-align:center; border:1px solid rgba(255,255,255,.05); }
-.stat-card .num{ font-size:26px; font-family:'Bebas Neue',sans-serif; color:var(--gold-bright); }
-.stat-card .lbl{ font-size:10px; color:var(--text-low); text-transform:uppercase; letter-spacing:.06em; margin-top:2px; }
+#view-profile{ padding:16px 18px 36px; }
+.profile-hero{ text-align:center; margin-bottom:14px; }
+.profile-hero .circ-lg{ width:92px; height:92px; border-radius:50%; margin:0 auto 10px; display:flex; align-items:center; justify-content:center; font-size:42px; background:var(--navy-800); border:2px solid var(--gold-bright); }
+.profile-hero h2{ font-size:24px; }
+.profile-hero .verify-line{ font-size:11px; color:var(--cyan); margin-top:4px; }
+.profile-suggestions{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:14px 16px; margin-bottom:18px; }
+.profile-suggestions .suggestion-head{ font-size:11px; text-transform:uppercase; letter-spacing:.12em; color:var(--text-low); margin-bottom:8px; }
+.profile-suggestions .suggestion-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+.suggestion-chip{ width:100%; padding:10px 12px; border-radius:14px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); color:var(--text-hi); font-size:12px; cursor:pointer; text-align:center; transition:.15s; }
+.suggestion-chip:hover{ background:rgba(255,255,255,.1); }
+.stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:16px 0; }
+.stat-card{ background:var(--navy-800); border-radius:14px; padding:12px; text-align:center; border:1px solid rgba(255,255,255,.05); }
+.stat-card .num{ font-size:24px; font-family:'Bebas Neue',sans-serif; color:var(--gold-bright); }
+.stat-card .lbl{ font-size:9px; color:var(--text-low); text-transform:uppercase; letter-spacing:.06em; margin-top:2px; }
 
 /* Section headers */
 .section-header{ font-size:12px; font-weight:600; text-transform:uppercase; color:var(--text-low); letter-spacing:.08em; margin:24px 0 12px; padding:0 4px; }
@@ -49,6 +54,14 @@
 .payment-method-item .method-info .method-type{ font-size:14px; font-weight:500; }
 .payment-method-item .method-info .method-last{ font-size:11px; color:var(--text-low); }
 
+.pricing-hero{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px; margin-bottom:18px; }
+.pricing-card{ background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:16px; display:flex; flex-direction:column; gap:10px; }
+.pricing-card.highlight{ background:linear-gradient(135deg, rgba(0,255,200,.12), rgba(255,200,0,.10)); border-color:rgba(0,255,200,.25); }
+.plan-name{ font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:var(--text-low); }
+.plan-price{ font-size:22px; font-family:'Bebas Neue',sans-serif; color:var(--gold-bright); }
+.plan-benefit{ font-size:12px; color:var(--text-mid); }
+.trial-banner{ display:flex; justify-content:space-between; align-items:center; gap:12px; padding:16px 18px; background:rgba(0,255,200,.08); border:1px solid rgba(0,255,200,.18); border-radius:22px; margin-bottom:18px; }
+.trial-banner .btn-sm{ padding:10px 16px; }
 .payment-panel{ display:grid; gap:18px; }
 .payment-header{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; }
 .payment-summary{ padding:18px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:22px; }
@@ -58,15 +71,35 @@
 .card-number{ font-size:18px; letter-spacing:.25em; color:#fff; font-family:'Bebas Neue',sans-serif; }
 .card-meta{ display:flex; justify-content:space-between; color:var(--text-mid); font-size:12px; }
 .payment-form{ display:grid; gap:14px; }
-.form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.payment-card-shell{ background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); border-radius:26px; padding:18px; backdrop-filter:blur(20px); box-shadow:0 18px 50px rgba(0,0,0,.2); display:flex; flex-direction:column; gap:14px; }
+.card-fields{ display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 .payment-form label{ display:flex; flex-direction:column; gap:8px; font-size:12px; color:var(--text-low); }
-.payment-form input{ width:100%; padding:12px 14px; border-radius:14px; border:1px solid rgba(255,255,255,.08); background:rgba(17,22,42,.95); color:#fff; font-size:14px; }
-.payment-form input::placeholder{ color:rgba(255,255,255,.4); }
-
+.payment-form input{ width:100%; padding:14px 16px; border-radius:16px; border:1px solid rgba(255,255,255,.1); background:rgba(10,13,24,.85); color:#fff; font-size:14px; backdrop-filter:blur(16px); }
+.payment-form input::placeholder{ color:rgba(255,255,255,.45); }
+.security-row{ display:flex; flex-wrap:wrap; gap:10px; }
+.security-pill{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:16px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); font-size:12px; color:var(--text-mid); }
+.security-pill span{ font-size:14px; }
+.sticky-paybar{ display:none; position:sticky; bottom:0; width:100%; margin-top:10px; padding:14px 0 0; background:linear-gradient(180deg, transparent, rgba(6,9,20,.96)); }
+.sticky-paybar .btn{ width:100%; }
 .empty-state{ text-align:center; padding:30px 20px; color:var(--text-low); font-size:14px; }
-
 /* Buttons block */
 .btn-block{ width:100%; }
+
+@media (max-width:780px){
+  .pricing-hero{ grid-template-columns:1fr; }
+  .card-fields{ grid-template-columns:1fr; }
+  .payment-form input{ font-size:15px; }
+  .modal-box{ max-height:100vh; margin:0 0 0 0; }
+  .sticky-paybar{ display:block; }
+}
+
+@media (max-width:480px){
+  .plan-grid{ grid-template-columns:1fr; }
+  .modal-box{ max-width:100%; }
+  .profile-dropdown{ right:-10px; width:calc(100vw - 24px); }
+  .trial-banner{ flex-direction:column; align-items:flex-start; }
+  .trial-banner .btn-sm{ width:100%; }
+}
 
 @media (max-width:780px){
   .form-grid{ grid-template-columns:1fr; }

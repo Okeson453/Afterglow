@@ -95,8 +95,8 @@ function sendMessage(){
       'Hey! How are you doing? 😊',
       'That sounds fun! When are you free? 📅',
       'OMG yes! I totally agree 💯',
-      'Haha that\\'s so funny 😂',
-      'Let\\'s keep chatting!',
+      "Haha that's so funny 😂",
+      "Let's keep chatting!",
       'You seem cool, wanna exchange numbers? 📱',
       'This is nice! I like your vibe ✨'
     ];

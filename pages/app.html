@@ -38,16 +38,67 @@
 <!-- Match modal -->
 <div id="mount-modal"></div>
 
+<div class="drawer-overlay" id="privacy-drawer" onclick="closePrivacyDrawer()">
+  <div class="drawer-panel" onclick="event.stopPropagation()">
+    <div class="drawer-header">
+      <div>
+        <div class="drawer-title">Privacy is Sexy</div>
+        <div class="drawer-sub">Keep your presence hidden and your actions private.</div>
+      </div>
+      <button class="drawer-close" onclick="closePrivacyDrawer()">✕</button>
+    </div>
+    <div class="privacy-score">
+      <div class="score-label">Privacy Score</div>
+      <div class="score-bar"><span id="privacy-score-bar"></span></div>
+      <div class="score-text" id="privacy-score-text">80% private</div>
+    </div>
+    <div class="drawer-toggles">
+      <div class="toggle-item">
+        <div>
+          <div class="lab">Hide my online status</div>
+          <div class="sub">Stay invisible while browsing.</div>
+        </div>
+        <button class="toggle on" id="toggle-online-status" onclick="togglePrivacySwitch(this)"></button>
+      </div>
+      <div class="toggle-item">
+        <div>
+          <div class="lab">Block users instantly</div>
+          <div class="sub">Stop unwanted profiles in one tap.</div>
+        </div>
+        <button class="toggle on" id="toggle-block-users" onclick="togglePrivacySwitch(this)"></button>
+      </div>
+      <div class="toggle-item">
+        <div>
+          <div class="lab">Disable video calls</div>
+          <div class="sub">Prevent incoming video invites.</div>
+        </div>
+        <button class="toggle on" id="toggle-video-calls" onclick="togglePrivacySwitch(this)"></button>
+      </div>
+      <div class="toggle-item">
+        <div>
+          <div class="lab">Delete chat history</div>
+          <div class="sub">Erase past conversations instantly.</div>
+        </div>
+        <button class="toggle" id="toggle-delete-history" onclick="togglePrivacySwitch(this)"></button>
+      </div>
+    </div>
+    <div class="drawer-actions">
+      <button class="btn btn-ghost btn-block" onclick="clearChatHistory()">Delete chat history</button>
+      <button class="btn btn-primary btn-block" onclick="savePrivacySettings()">Save privacy settings</button>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 
 <script src="../js/state.js"></script>
 <script src="../js/utils.js"></script>
 <script src="../js/data.js"></script>
 <script src="../js/discover.js"></script>
-<script src="../js/messages.js"></script>
 <script src="../js/matches.js"></script>
 <script src="../js/chat.js"></script>
 <script src="../js/profile.js"></script>
+<script src="../js/messages.js"></script>
 <script src="../js/partial-loader.js"></script>
 </body>
 </html>

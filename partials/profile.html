@@ -5,6 +5,16 @@
     <div class="verify-line" id="profile-verify">○ Not yet verified</div>
   </div>
 
+  <div class="profile-suggestions">
+    <div class="suggestion-head">Suggested next steps</div>
+    <div class="suggestion-grid">
+      <button class="suggestion-chip" onclick="editProfile()">Complete your bio</button>
+      <button class="suggestion-chip" onclick="openUpgradePlans()">Unlock Gold perks</button>
+      <button class="suggestion-chip" onclick="showView('matches')">Check new matches</button>
+      <button class="suggestion-chip" onclick="openFilters()">Refine discovery</button>
+    </div>
+  </div>
+
   <div class="stat-grid">
     <div class="stat-card"><div class="num" id="stat-likes">0</div><div class="lbl">Likes Sent</div></div>
     <div class="stat-card"><div class="num" id="stat-matches">0</div><div class="lbl">Matches</div></div>
@@ -164,14 +174,41 @@
       <button onclick="closeModal('payment')" class="modal-close">✕</button>
     </div>
     <div class="modal-body">
+      <div class="pricing-hero">
+        <div class="pricing-card">
+          <div class="plan-name">Gold</div>
+          <div class="plan-price">$9.99/mo</div>
+          <div class="plan-benefit">Unlimited chats</div>
+          <div class="plan-benefit">Priority likes</div>
+        </div>
+        <div class="pricing-card highlight">
+          <div class="plan-name">Platinum</div>
+          <div class="plan-price">$14.99/mo</div>
+          <div class="plan-benefit">Incognito mode</div>
+          <div class="plan-benefit">Spotlight boost</div>
+        </div>
+        <div class="pricing-card">
+          <div class="plan-name">Diamond</div>
+          <div class="plan-price">$24.99/mo</div>
+          <div class="plan-benefit">VIP matches</div>
+          <div class="plan-benefit">Ad-free experience</div>
+        </div>
+      </div>
+      <div class="trial-banner">
+        <div>
+          <div style="font-weight:700;">Start Your 3-Day Free Trial</div>
+          <div style="font-size:12px; color:var(--text-mid);">Try Gold instantly. Cancel anytime.</div>
+        </div>
+        <button class="btn btn-primary btn-sm" type="button" onclick="startFreeTrial()">Start Trial</button>
+      </div>
       <div class="payment-panel">
         <div class="payment-summary">
           <div class="payment-header">
             <div>
               <div class="lab">Payment details</div>
-              <div class="sub">Secure card entry with card preview</div>
+              <div class="sub">Secure card entry with instant trust indicators.</div>
             </div>
-            <div class="status-pill" id="payment-pill">Live</div>
+            <div class="status-pill" id="payment-pill">Protected</div>
           </div>
           <div class="card-preview" id="card-preview">
             <div class="card-chip"></div>
@@ -180,35 +217,36 @@
             <div class="card-meta"><span id="preview-name">You</span><span id="preview-expiry">12/26</span></div>
           </div>
         </div>
-
         <form id="card-form" class="payment-form" onsubmit="event.preventDefault(); saveCardDetails();">
-          <div class="form-grid">
-            <label>
-              Cardholder Name
-              <input id="card-name" type="text" placeholder="Jane Doe" autocomplete="cc-name" required>
-            </label>
-            <label>
-              Card Number
-              <input id="card-number" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNumber(this)" autocomplete="cc-number" required>
-            </label>
-            <label>
-              Expiry Date
-              <input id="card-expiry" type="text" inputmode="numeric" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)" autocomplete="cc-exp" required>
-            </label>
-            <label>
-              CVV
-              <input id="card-cvv" type="password" inputmode="numeric" placeholder="123" maxlength="4" oninput="formatCVV(this)" autocomplete="cc-csc" required>
-            </label>
+          <div class="payment-card-shell">
+            <div class="card-fields">
+              <label>
+                Cardholder Name
+                <input id="card-name" type="text" placeholder="Jane Doe" autocomplete="cc-name" required>
+              </label>
+              <label>
+                Card Number
+                <input id="card-number" type="text" inputmode="numeric" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNumber(this)" autocomplete="cc-number" required>
+              </label>
+              <label>
+                Expiry Date
+                <input id="card-expiry" type="text" inputmode="numeric" placeholder="MM/YY" maxlength="5" oninput="formatExpiry(this)" autocomplete="cc-exp" required>
+              </label>
+              <label>
+                CVV
+                <input id="card-cvv" type="password" inputmode="numeric" placeholder="123" maxlength="4" oninput="formatCVV(this)" autocomplete="cc-csc" required>
+              </label>
+            </div>
+            <div class="security-row">
+              <div class="security-pill"><span>🔒</span> Secure checkout</div>
+              <div class="security-pill">Norton Secured</div>
+            </div>
           </div>
-          <button class="btn btn-primary btn-block" type="submit">Save Card</button>
+          <button class="btn btn-primary btn-block" type="submit">Pay Now</button>
         </form>
-      </div>
-      <div style="margin-top:16px; padding:14px; background:rgba(255,255,255,.06); border-radius:18px; border:1px solid rgba(255,255,255,.08); font-size:13px; color:var(--text-mid);">
-        💳 All transactions are protected with AES-256 encryption and secure tokenization.
-      </div>
-    </div>
-  </div>
-</div>
+        <div class="sticky-paybar">
+          <button class="btn btn-primary" onclick="saveCardDetails()">Pay Now</button>
+        </div>
 
 <!-- SETTINGS MODAL -->
 <div class="modal-overlay" id="modal-settings">

@@ -164,28 +164,78 @@ function formatCVV(input){
 }
 
 function openFilters(){
-  openSettingsModal('Quick Settings', `
-    <div style="display:flex; flex-direction:column; gap:14px;">
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--navy-800); border-radius:14px;">
-        <div>
-          <div style="font-weight:600;">Discover mode</div>
-          <div style="font-size:12px; color:var(--text-low);">Switch between browse and quick swipe.</div>
-        </div>
-        <button class="toggle on" onclick="toggleSwitch(this)"></button>
-      </div>
-      <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--navy-800); border-radius:14px;">
-        <div>
-          <div style="font-weight:600;">Messages alerts</div>
-          <div style="font-size:12px; color:var(--text-low);">Always get notified for new chats.</div>
-        </div>
-        <button class="toggle on" onclick="toggleSwitch(this)"></button>
-      </div>
-      <div style="display:grid; gap:10px;">
-        <button class="btn btn-primary btn-block" onclick="showView('messages'); closeModal('settings')">Open Messages</button>
-        <button class="btn btn-ghost btn-block" onclick="showView('profile'); closeModal('settings')">Go to Profile</button>
-      </div>
-    </div>
-  `);
+  openPrivacyDrawer();
+}
+
+function openPrivacyDrawer(){
+  const drawer = document.getElementById('privacy-drawer');
+  if(!drawer) return;
+  drawer.classList.add('show');
+  updatePrivacyScore();
+}
+
+function closePrivacyDrawer(){
+  const drawer = document.getElementById('privacy-drawer');
+  if(!drawer) return;
+  drawer.classList.remove('show');
+}
+
+function togglePrivacySwitch(el){
+  el.classList.toggle('on');
+  updatePrivacyScore();
+}
+
+function updatePrivacyScore(){
+  const toggles = ['toggle-online-status','toggle-block-users','toggle-video-calls','toggle-delete-history'];
+  const active = toggles.reduce((count,id)=>{
+    const el = document.getElementById(id);
+    return count + (el && el.classList.contains('on') ? 1 : 0);
+  },0);
+  const score = Math.round((active / toggles.length) * 100);
+  const bar = document.getElementById('privacy-score-bar');
+  const text = document.getElementById('privacy-score-text');
+  if(bar) bar.style.width = score + '%';
+  if(text) text.textContent = `${score}% private`;
+}
+
+function savePrivacySettings(){
+  toast('✅ Privacy settings updated');
+  closePrivacyDrawer();
+}
+
+function clearChatHistory(){
+  if(confirm('Delete all chat history? This cannot be undone.')){
+    // Simulated history delete
+    toast('🗑️ Chat history deleted');
+    closePrivacyDrawer();
+  }
+}
+
+function openNewFlirts(){
+  toast('💋 New Flirts loaded');
+  showView('discover');
+}
+
+function openWhoViewedMe(){
+  toast('👀 Showing who viewed you');
+  showView('messages');
+}
+
+function openFreeCredits(){
+  toast('🎁 Free credits added to your wallet');
+}
+
+function openBoostProfile(){
+  toast('🚀 Boosting your profile');
+  openUpgradePlans();
+}
+
+function startFreeTrial(){
+  toast('✨ Free trial started — enjoy Gold for 3 days');
+  STATE.user.isPremium = true;
+  STATE.user.premiumTier = 'gold';
+  persist();
+  renderProfileView();
 }
 
 function removePaymentMethod(){
