@@ -1,7 +1,37 @@
 <div class="topbar">
   <div class="brandmark"><span class="dot"></span><span class="word">AFTER<b>GLOW</b></span></div>
+  <div class="topbar-center">
+    <button class="profile-pill" id="topbar-pill" onclick="toggleProfileDropdown()" title="Profile menu">
+      <span class="pill-avatar" id="topbar-avatar">✨</span>
+      <span class="pill-name" id="topbar-name">You</span>
+      <span class="pill-tier" id="topbar-tier">Gold</span>
+    </button>
+    <div class="profile-dropdown" id="topbar-dropdown">
+      <div class="dropdown-section">
+        <div class="dropdown-head">Quick Actions</div>
+        <div class="dropdown-grid">
+          <button type="button" class="quick-action" onclick="showView('discover'); toggleProfileDropdown()">Discover</button>
+          <button type="button" class="quick-action" onclick="showView('messages'); toggleProfileDropdown()">Messages</button>
+          <button type="button" class="quick-action" onclick="showView('profile'); toggleProfileDropdown()">Profile</button>
+          <button type="button" class="quick-action" onclick="openFilters(); toggleProfileDropdown()">Settings</button>
+        </div>
+      </div>
+      <div class="dropdown-section">
+        <div class="dropdown-head">Recent searches</div>
+        <div class="chip-grid">
+          <span class="chip">Late-night dates</span>
+          <span class="chip">Verified women</span>
+          <span class="chip">Gold matches</span>
+        </div>
+      </div>
+      <div class="dropdown-footer">
+        <div class="dropdown-head">More</div>
+        <button type="button" class="btn btn-ghost btn-sm" onclick="openPaymentSettings(); toggleProfileDropdown()">Manage payments</button>
+      </div>
+    </div>
+  </div>
   <div class="topbar-actions">
-    <button class="icon-btn" onclick="openFilters()" title="Filters">⚙️</button>
+    <button class="icon-btn" onclick="openFilters()" title="Settings">⚙️</button>
     <button class="icon-btn" onclick="showView('matches')" title="Matches">
       💬<span class="badge-dot" id="unread-badge" style="display:none">0</span>
     </button>

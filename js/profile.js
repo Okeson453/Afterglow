@@ -90,39 +90,102 @@ function openPaymentSettings(){
 }
 
 function renderPaymentMethods(){
-  const list = document.getElementById('payment-methods-list');
-  list.innerHTML = '';
-  
+  const cardBrand = document.getElementById('preview-brand');
+  const cardNumber = document.getElementById('preview-number');
+  const cardName = document.getElementById('preview-name');
+  const cardExpiry = document.getElementById('preview-expiry');
+
   if(STATE.user.paymentMethod){
-    const item = document.createElement('div');
-    item.className = 'payment-method-item';
-    item.innerHTML = `
-      <div class="method-info">
-        <div class="method-type">💳 ${STATE.user.paymentMethod.brand.toUpperCase()}</div>
-        <div class="method-last">Ending in ${STATE.user.paymentMethod.last4}</div>
-      </div>
-      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="removePaymentMethod()">Remove</button>
-    `;
-    list.appendChild(item);
+    cardBrand.textContent = STATE.user.paymentMethod.brand.toUpperCase();
+    cardNumber.textContent = '•••• •••• •••• ' + STATE.user.paymentMethod.last4;
+    cardName.textContent = STATE.user.paymentMethod.cardholder || 'You';
+    cardExpiry.textContent = STATE.user.paymentMethod.expiry || '12/26';
   }else{
-    const empty = document.createElement('div');
-    empty.className = 'empty-state';
-    empty.textContent = 'No payment methods saved';
-    list.appendChild(empty);
+    cardBrand.textContent = 'VISA';
+    cardNumber.textContent = '•••• •••• •••• 4242';
+    cardName.textContent = 'You';
+    cardExpiry.textContent = 'MM/YY';
+  }
+
+  const nameInput = document.getElementById('card-name');
+  const numberInput = document.getElementById('card-number');
+  const expiryInput = document.getElementById('card-expiry');
+  const cvvInput = document.getElementById('card-cvv');
+
+  if(nameInput) nameInput.value = STATE.user.paymentMethod?.cardholder || '';
+  if(numberInput) numberInput.value = STATE.user.paymentMethod?.number || '';
+  if(expiryInput) expiryInput.value = STATE.user.paymentMethod?.expiry || '';
+  if(cvvInput) cvvInput.value = '';
+}
+
+function saveCardDetails(){
+  const name = document.getElementById('card-name').value.trim();
+  const number = document.getElementById('card-number').value.replace(/\s+/g, '');
+  const expiry = document.getElementById('card-expiry').value.trim();
+  const cvv = document.getElementById('card-cvv').value.trim();
+
+  if(!name || !number || !expiry || !cvv || number.length < 15){
+    toast('Please enter valid card details');
+    return;
+  }
+
+  const digits = number.slice(-4);
+  const brand = number.startsWith('4') ? 'visa' : number.startsWith('5') ? 'mastercard' : 'card';
+
+  STATE.user.paymentMethod = {
+    brand,
+    number: number.replace(/(\d{4})(?=\d)/g, '$1 '),
+    last4: digits,
+    expiry,
+    cardholder: name
+  };
+  persist();
+  renderPaymentMethods();
+  renderProfileView();
+  toast('✅ Card saved successfully');
+}
+
+function formatCardNumber(input){
+  const digits = input.value.replace(/\D/g, '').slice(0,16);
+  input.value = digits.replace(/(\d{4})(?=\d)/g, '$1 ');
+}
+
+function formatExpiry(input){
+  const digits = input.value.replace(/\D/g, '').slice(0,4);
+  if(digits.length > 2){
+    input.value = digits.slice(0,2) + '/' + digits.slice(2);
+  } else {
+    input.value = digits;
   }
 }
 
-function addPaymentMethod(){
-  toast('💳 Opening Stripe checkout…');
-  setTimeout(()=>{
-    STATE.user.paymentMethod = {
-      brand: 'visa',
-      last4: '4242'
-    };
-    persist();
-    renderPaymentMethods();
-    toast('✅ Card added successfully');
-  }, 1200);
+function formatCVV(input){
+  input.value = input.value.replace(/\D/g, '').slice(0,4);
+}
+
+function openFilters(){
+  openSettingsModal('Quick Settings', `
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--navy-800); border-radius:14px;">
+        <div>
+          <div style="font-weight:600;">Discover mode</div>
+          <div style="font-size:12px; color:var(--text-low);">Switch between browse and quick swipe.</div>
+        </div>
+        <button class="toggle on" onclick="toggleSwitch(this)"></button>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding:12px; background:var(--navy-800); border-radius:14px;">
+        <div>
+          <div style="font-weight:600;">Messages alerts</div>
+          <div style="font-size:12px; color:var(--text-low);">Always get notified for new chats.</div>
+        </div>
+        <button class="toggle on" onclick="toggleSwitch(this)"></button>
+      </div>
+      <div style="display:grid; gap:10px;">
+        <button class="btn btn-primary btn-block" onclick="showView('messages'); closeModal('settings')">Open Messages</button>
+        <button class="btn btn-ghost btn-block" onclick="showView('profile'); closeModal('settings')">Go to Profile</button>
+      </div>
+    </div>
+  `);
 }
 
 function removePaymentMethod(){
@@ -377,6 +440,21 @@ function openSettingsModal(title, content){
   document.getElementById('settings-content').innerHTML = content;
   openModal('settings');
 }
+
+function toggleProfileDropdown(){
+  const dropdown = document.getElementById('topbar-dropdown');
+  if(!dropdown) return;
+  dropdown.classList.toggle('show');
+}
+
+document.addEventListener('click', event => {
+  const dropdown = document.getElementById('topbar-dropdown');
+  const pill = document.getElementById('topbar-pill');
+  if(!dropdown || !pill) return;
+  if(dropdown.classList.contains('show') && !dropdown.contains(event.target) && !pill.contains(event.target)){
+    dropdown.classList.remove('show');
+  }
+});
 
 function logout(){
   if(confirm('Log out of Afterglow?')){
