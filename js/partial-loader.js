@@ -30,7 +30,7 @@ async function bootApp(){
 
   // Partials are in the DOM now — safe to init each section's module.
   initDiscover();
-  initMessages();
+  if(typeof initMessages !== 'undefined') initMessages();
   initMatches();
   initProfile();
   document.getElementById('bottomnav').style.display = 'flex';
