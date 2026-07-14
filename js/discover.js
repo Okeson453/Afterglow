@@ -95,6 +95,19 @@ function commitSwipe(card, action){
   const candidate = STATE.candidates.find(c=>c.id===id);
   if(!candidate) return;
 
+  // GOLD FEATURE LOCKS
+  if(action==='like' && !STATE.user.isPremium){
+    const likesToday = STATE.swipesSent % 10;
+    if(likesToday >= 10){
+      openUpgradeModal('💙 Unlimited Likes', 'You\'ve used your 10 daily likes. Upgrade to Gold for unlimited likes and more!', 'gold');
+      return;
+    }
+  }
+  if(action==='super' && !STATE.user.isPremium){
+    openUpgradeModal('⭐ Super Like', 'Super Likes are a Gold membership feature. Upgrade now to express stronger interest!', 'gold');
+    return;
+  }
+
   let flyX = 0, flyRot = 0;
   if(action==='like'){ flyX=650; flyRot=25; }
   if(action==='pass'){ flyX=-650; flyRot=-25; }
@@ -124,7 +137,11 @@ function commitSwipe(card, action){
 
 function rewindCard(){
   if(!lastPassed){ toast('Nothing to rewind yet.'); return; }
-  // API: POST /swipes/undo (paid feature gate goes here)
+  // API: POST /swipes/undo (paid feature gate)
+  if(!STATE.user.isPremium){
+    openUpgradeModal('↶ Rewind', 'Rewind is a Gold membership feature. See your last swipe again!', 'gold');
+    return;
+  }
   STATE.candidates.unshift(lastPassed.candidate);
   persist();
   lastPassed = null;

@@ -1,0 +1,57 @@
+<div class="view" id="view-messages">
+  <div class="messages-header">
+    <h2>Messages 💌</h2>
+    <input type="text" class="search-box" placeholder="Search conversations..." id="msg-search" onkeyup="filterMessages()">
+  </div>
+
+  <div class="messages-list" id="messages-list">
+    <!-- Loaded dynamically -->
+  </div>
+
+  <!-- Message Detail View -->
+  <div id="message-detail" class="message-detail hidden">
+    <div class="msg-header">
+      <button onclick="backToList()" class="back-btn">← Back</button>
+      <div class="msg-info">
+        <div class="circ-sm" id="msg-avatar"></div>
+        <div>
+          <div class="msg-name" id="msg-name"></div>
+          <div class="msg-status" id="msg-status"></div>
+        </div>
+      </div>
+      <button class="msg-menu" onclick="openConvMenu()">⋯</button>
+    </div>
+
+    <div class="msg-thread" id="msg-thread">
+      <!-- Messages loaded here -->
+    </div>
+
+    <div class="msg-input-box">
+      <input 
+        type="text" 
+        id="msg-input" 
+        placeholder="Type a message..." 
+        onkeypress="handleMsgKeypress(event)"
+        class="msg-input"
+      >
+      <button class="msg-send-btn" onclick="sendMessage()">↗</button>
+    </div>
+  </div>
+
+  <!-- Conversation Menu Modal -->
+  <div class="modal-overlay" id="modal-convmenu">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3>Conversation Options</h3>
+        <button onclick="closeModal('convmenu')" class="modal-close">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <button class="btn btn-ghost btn-block" onclick="callMatch(); closeModal('convmenu')">📞 Video Call (Gold)</button>
+          <button class="btn btn-ghost btn-block" onclick="reportMatch(); closeModal('convmenu')">🚫 Report</button>
+          <button class="btn btn-danger btn-block" onclick="deleteConversation(); closeModal('convmenu')">🗑️ Delete Chat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

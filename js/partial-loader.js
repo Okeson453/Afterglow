@@ -20,6 +20,7 @@ async function bootApp(){
   await Promise.all([
     loadPartial('../partials/topbar.html', '#mount-topbar'),
     loadPartial('../partials/discover.html', '#mount-discover'),
+    loadPartial('../partials/messages.html', '#mount-messages'),
     loadPartial('../partials/matches.html', '#mount-matches'),
     loadPartial('../partials/chat.html', '#mount-chat'),
     loadPartial('../partials/profile.html', '#mount-profile'),
@@ -29,6 +30,7 @@ async function bootApp(){
 
   // Partials are in the DOM now — safe to init each section's module.
   initDiscover();
+  initMessages();
   initMatches();
   initProfile();
   document.getElementById('bottomnav').style.display = 'flex';

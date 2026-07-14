@@ -359,6 +359,19 @@ function submitReport(){
 
 // ============ HELPER FUNCTIONS ============
 
+function openUpgradeModal(title, message, plan){
+  document.getElementById('settings-title').textContent = title;
+  document.getElementById('settings-content').innerHTML = `
+    <div style="text-align:center; padding:20px;">
+      <div style="font-size:32px; margin-bottom:16px;">💎</div>
+      <p style="margin-bottom:20px; line-height:1.6;">${message}</p>
+      <button class="btn btn-primary btn-block" onclick="selectPlan('${plan}')">Upgrade Now</button>
+      <button class="btn btn-ghost btn-block" style="margin-top:8px;" onclick="closeModal('settings')">Maybe Later</button>
+    </div>
+  `;
+  openModal('settings');
+}
+
 function openSettingsModal(title, content){
   document.getElementById('settings-title').textContent = title;
   document.getElementById('settings-content').innerHTML = content;
