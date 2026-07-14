@@ -1,0 +1,20 @@
+/* ============ DESIGN TOKENS ============ */
+:root{
+  --navy-950:#06070d;
+  --navy-900:#0a0d18;
+  --navy-800:#111526;
+  --navy-700:#1a1f38;
+  --navy-600:#232a4a;
+  --gold:#d4af37;
+  --gold-bright:#f0c95c;
+  --cyan:#2fe3e0;
+  --cyan-dim:#1a8f8d;
+  --pink:#ff5d8f;
+  --text-hi:#f5f3ee;
+  --text-mid:#a7acc4;
+  --text-low:#5c6284;
+  --danger:#ff5d6c;
+  --ok:#42e19a;
+  --radius:18px;
+  --shadow-lift:0 20px 60px -15px rgba(0,0,0,.7);
+}

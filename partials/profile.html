@@ -1,0 +1,47 @@
+<div class="view" id="view-profile">
+  <div class="profile-hero">
+    <div class="circ-lg" id="profile-avatar"></div>
+    <h2 id="profile-name"></h2>
+    <div class="verify-line" id="profile-verify">○ Not yet verified</div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="num" id="stat-likes">0</div><div class="lbl">Likes Sent</div></div>
+    <div class="stat-card"><div class="num" id="stat-matches">0</div><div class="lbl">Matches</div></div>
+    <div class="stat-card"><div class="num" id="stat-msgs">0</div><div class="lbl">Conversations</div></div>
+  </div>
+
+  <div class="settings-list">
+    <div class="settings-item">
+      <div><div class="lab">Get verified</div><div class="sub">Selfie check → trust badge</div></div>
+      <button class="btn btn-cyan btn-sm" style="width:auto;" onclick="verifyProfile()">Verify</button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Profile visibility</div><div class="sub">Show me in discovery</div></div>
+      <button class="toggle on" id="toggle-visible" onclick="toggleSwitch(this)"></button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Incognito mode</div><div class="sub">Only visible to people you like</div></div>
+      <button class="toggle" id="toggle-incognito" onclick="toggleSwitch(this)"></button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Show distance</div><div class="sub">Approximate, never exact location</div></div>
+      <button class="toggle on" id="toggle-distance" onclick="toggleSwitch(this)"></button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Safety Center</div><div class="sub">Check-in timer, share date details</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="toast('Safety Center: share your date plan with a trusted contact and set a check-in timer.')">Open</button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Blocked accounts</div><div class="sub" id="blocked-count">0 blocked</div></div>
+      <button class="btn btn-ghost btn-sm" style="width:auto;" onclick="toast('Blocked list would render here.')">Manage</button>
+    </div>
+    <div class="settings-item">
+      <div><div class="lab">Afterglow Gold</div><div class="sub">Unlimited likes · see who liked you · rewind</div></div>
+      <button class="btn btn-primary btn-sm" style="width:auto;" onclick="toast('Billing flow → Stripe/RevenueCat wires in here.')">Upgrade</button>
+    </div>
+    <div class="settings-item">
+      <button class="btn btn-danger btn-sm" style="width:100%;" onclick="logout()">Log Out</button>
+    </div>
+  </div>
+</div>

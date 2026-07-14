@@ -1,0 +1,13 @@
+/* ============ MATCH MODAL (partials/match-modal.html) ============ */
+.modal-overlay{
+  position:fixed; inset:0; z-index:100; background:rgba(6,7,13,.88); backdrop-filter:blur(6px);
+  display:none; align-items:center; justify-content:center; padding:20px;
+}
+.modal-overlay.active{ display:flex; animation:fadeUp .3s ease both; }
+.match-modal{ text-align:center; max-width:380px; width:100%; }
+.match-modal .headline{ font-size:52px; background:linear-gradient(120deg,var(--gold-bright),var(--pink)); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:6px; }
+.match-modal .sub{ color:var(--text-mid); margin-bottom:26px; font-size:14px; }
+.match-pair{ display:flex; align-items:center; justify-content:center; margin-bottom:30px; }
+.match-pair .circ{ width:96px; height:96px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:44px; background:var(--navy-800); border:3px solid var(--gold-bright); }
+.match-pair .circ:last-child{ margin-left:-22px; border-color:var(--cyan); }
+.match-modal .actions{ display:flex; flex-direction:column; gap:10px; }

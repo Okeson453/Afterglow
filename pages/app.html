@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>AFTERGLOW</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="../css/variables.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/components.css">
+<link rel="stylesheet" href="../css/app-shell.css">
+<link rel="stylesheet" href="../css/discover.css">
+<link rel="stylesheet" href="../css/matches.css">
+<link rel="stylesheet" href="../css/chat.css">
+<link rel="stylesheet" href="../css/profile.css">
+<link rel="stylesheet" href="../css/modal.css">
+</head>
+<body>
+
+<div id="app">
+  <section id="screen-main" class="screen active">
+    <div id="mount-topbar"></div>
+
+    <div id="mount-discover"></div>
+    <div id="mount-matches"></div>
+    <div id="mount-chat"></div>
+    <div id="mount-profile"></div>
+  </section>
+</div>
+
+<!-- Bottom nav -->
+<div class="bottomnav" id="bottomnav" style="display:none;"></div>
+
+<!-- Match modal -->
+<div id="mount-modal"></div>
+
+<div class="toast" id="toast"></div>
+
+<script src="../js/state.js"></script>
+<script src="../js/utils.js"></script>
+<script src="../js/data.js"></script>
+<script src="../js/discover.js"></script>
+<script src="../js/matches.js"></script>
+<script src="../js/chat.js"></script>
+<script src="../js/profile.js"></script>
+<script src="../js/partial-loader.js"></script>
+</body>
+</html>

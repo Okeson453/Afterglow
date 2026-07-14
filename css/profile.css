@@ -1,0 +1,14 @@
+/* ============ PROFILE (partials/profile.html) ============ */
+#view-profile{ padding:18px 20px 40px; }
+.profile-hero{ text-align:center; margin-bottom:20px; }
+.profile-hero .circ-lg{ width:110px; height:110px; border-radius:50%; margin:0 auto 12px; display:flex; align-items:center; justify-content:center; font-size:52px; background:var(--navy-800); border:3px solid var(--gold-bright); }
+.profile-hero h2{ font-size:28px; }
+.profile-hero .verify-line{ font-size:12px; color:var(--cyan); margin-top:4px; }
+.stat-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:20px 0; }
+.stat-card{ background:var(--navy-800); border-radius:14px; padding:14px; text-align:center; border:1px solid rgba(255,255,255,.05); }
+.stat-card .num{ font-size:26px; font-family:'Bebas Neue',sans-serif; color:var(--gold-bright); }
+.stat-card .lbl{ font-size:10px; color:var(--text-low); text-transform:uppercase; letter-spacing:.06em; margin-top:2px; }
+.settings-list{ display:flex; flex-direction:column; gap:8px; }
+.settings-item{ display:flex; justify-content:space-between; align-items:center; padding:14px 16px; background:var(--navy-800); border-radius:12px; border:1px solid rgba(255,255,255,.05); }
+.settings-item .lab{ font-size:14px; }
+.settings-item .sub{ font-size:11px; color:var(--text-low); }

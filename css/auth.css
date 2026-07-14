@@ -1,0 +1,10 @@
+/* ============ AUTH PAGE (index.html) ============ */
+#screen-auth{
+  display:flex; align-items:center; justify-content:center;
+  padding:32px 20px; min-height:100vh;
+}
+.auth-wrap{ width:100%; max-width:420px; }
+.auth-hero{ text-align:center; margin-bottom:34px; }
+.auth-hero .brandmark{ justify-content:center; margin-bottom:18px; }
+.auth-hero h1{ font-size:56px; line-height:.95; background:linear-gradient(120deg,var(--gold-bright),var(--cyan) 80%); -webkit-background-clip:text; background-clip:text; color:transparent; }
+.auth-hero p{ color:var(--text-mid); margin-top:10px; font-size:15px; }
