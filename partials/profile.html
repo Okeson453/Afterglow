@@ -12,6 +12,8 @@
       <button class="suggestion-chip" onclick="openUpgradePlans()">Unlock Gold perks</button>
       <button class="suggestion-chip" onclick="showView('matches')">Check new matches</button>
       <button class="suggestion-chip" onclick="openFilters()">Refine discovery</button>
+      <button class="suggestion-chip" onclick="openWhoViewedMe()">See who viewed you</button>
+      <button class="suggestion-chip" onclick="openBoostProfile()">Boost your profile</button>
     </div>
   </div>
 
@@ -126,6 +128,21 @@
       <button onclick="closeModal('upgrade')" class="modal-close">✕</button>
     </div>
     <div class="modal-body">
+      <div class="upgrade-hero">
+        <div>
+          <div class="upgrade-tag">Limited time offer</div>
+          <div class="upgrade-title">Instant premium access with a 3-day free trial</div>
+          <p class="upgrade-copy">Unlock unlimited likes, incognito browsing, and priority matches today. Trusted by thousands of singles who want more control and more sparks.</p>
+        </div>
+        <div class="upgrade-summary">
+          <div class="upgrade-stat">Trusted by <strong>10,000+</strong> Afterglow members</div>
+          <div class="upgrade-progress" id="upgrade-progress">You're 0/10 free likes used today.</div>
+        </div>
+      </div>
+      <div class="upgrade-actions">
+        <button class="btn btn-primary btn-block" onclick="startFreeTrial()">Start 3-Day Free Trial</button>
+        <div class="upgrade-subtext">Cancel anytime. No commitment until after trial.</div>
+      </div>
       <div class="plan-grid">
         <div class="plan-card">
           <div class="plan-name">Free</div>
@@ -134,19 +151,21 @@
             <div class="feature">✓ Basic discovery</div>
             <div class="feature">✓ 10 likes/day</div>
             <div class="feature">○ See who liked you</div>
-            <div class="feature">○ Unlimited rewrites</div>
+            <div class="feature">○ Incognito mode</div>
           </div>
           <button class="btn btn-ghost btn-block" onclick="toast('You are already on Free plan')">Current</button>
         </div>
         <div class="plan-card featured">
-          <div class="plan-badge">⭐ Popular</div>
+          <div class="plan-badge">⭐ Most popular</div>
           <div class="plan-name">Gold</div>
           <div class="plan-price">$9.99/mo</div>
           <div class="plan-features">
-            <div class="feature">✓ Unlimited likes</div>
-            <div class="feature">✓ See who liked you</div>
-            <div class="feature">✓ Rewind picks</div>
-            <div class="feature">✓ Hide ads</div>
+            <div class="feature">Unlimited likes</div>
+            <div class="feature">See who viewed you</div>
+            <div class="feature">Rewind picks</div>
+            <div class="feature">Hide ads</div>
+            <div class="feature">Incognito browsing</div>
+            <div class="feature">Priority profile boost</div>
           </div>
           <button class="btn btn-primary btn-block" onclick="selectPlan('gold')">Upgrade to Gold</button>
         </div>
@@ -154,10 +173,12 @@
           <div class="plan-name">Platinum</div>
           <div class="plan-price">$19.99/mo</div>
           <div class="plan-features">
-            <div class="feature">✓ All Gold features</div>
-            <div class="feature">✓ Priority matches</div>
-            <div class="feature">✓ Spotlight boost</div>
-            <div class="feature">✓ Priority support</div>
+            <div class="feature">All Gold features</div>
+            <div class="feature">Priority matches</div>
+            <div class="feature">Spotlight boost</div>
+            <div class="feature">VIP chat queue</div>
+            <div class="feature">Premium support</div>
+            <div class="feature">Advanced privacy controls</div>
           </div>
           <button class="btn btn-primary btn-block" onclick="selectPlan('platinum')">Upgrade to Platinum</button>
         </div>

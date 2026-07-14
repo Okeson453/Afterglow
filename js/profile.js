@@ -67,7 +67,22 @@ function closeModal(modalId){
 // ============ UPGRADE FUNCTIONS ============
 
 function openUpgradePlans(){
+  const progressText = getUpgradeProgressText();
+  const progressEl = document.getElementById('upgrade-progress');
+  if(progressEl) progressEl.textContent = progressText;
   openModal('upgrade');
+}
+
+function getUpgradeProgressText(){
+  if(!STATE.user || STATE.user.isPremium){
+    return 'You already have premium access — renew or upgrade anytime.';
+  }
+  const used = Number(STATE.swipesSent || 0) % 10;
+  const remaining = 10 - used;
+  if(remaining <= 1){
+    return `Only ${remaining} free like left today — upgrade for unlimited likes.`;
+  }
+  return `You have ${remaining} free likes left today — unlock unlimited likes now.`;
 }
 
 function selectPlan(plan){
@@ -236,6 +251,7 @@ function startFreeTrial(){
   STATE.user.premiumTier = 'gold';
   persist();
   renderProfileView();
+  closeModal('upgrade');
 }
 
 function removePaymentMethod(){
