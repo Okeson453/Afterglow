@@ -11,7 +11,9 @@ function renderProfileView(){
   const avatarEl = document.getElementById('profile-avatar');
   if(!avatarEl) return; // partial not mounted yet
 
-  avatarEl.textContent = STATE.user.avatar || '✨';
+  renderPhotoAvatar(avatarEl, STATE.user.name || 'You', 'profile-photo');
+  const topbarAvatar = document.getElementById('topbar-avatar');
+  if(topbarAvatar) renderPhotoAvatar(topbarAvatar, STATE.user.name || 'You', 'profile-photo');
   document.getElementById('profile-name').textContent = STATE.user.name || 'You';
   document.getElementById('profile-verify').innerHTML = STATE.user.verified
     ? '<span style="color:var(--cyan)">✓ Verified profile</span>'

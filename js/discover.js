@@ -34,7 +34,7 @@ function renderDeck(){
     el.style.transform = `translateY(${depthFromTop*8}px) scale(${1 - depthFromTop*0.03})`;
     el.style.zIndex = idx+1;
     el.innerHTML = `
-      <div class="card-art">${c.avatar}</div>
+      <div class="card-art"><img src="${getAssetPhoto(c.name)}" alt="${c.name}" class="avatar-photo" /></div>
       <div class="stamp like">LIKE</div>
       <div class="stamp pass">PASS</div>
       <div class="card-body">
@@ -164,8 +164,8 @@ function createMatch(candidate){
   STATE.matches.unshift(match);
   persist();
 
-  document.getElementById('mm-avatar-me').textContent = STATE.user.avatar || '✨';
-  document.getElementById('mm-avatar-them').textContent = candidate.avatar;
+  renderPhotoAvatar(document.getElementById('mm-avatar-me'), STATE.user.name || 'You', 'profile-photo');
+  renderPhotoAvatar(document.getElementById('mm-avatar-them'), candidate.name, 'profile-photo');
   document.getElementById('mm-sub').textContent = `You and ${candidate.name} both said yes.`;
   document.getElementById('match-modal').classList.add('active');
   window.__pendingMatch = match;

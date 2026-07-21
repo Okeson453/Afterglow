@@ -9,7 +9,7 @@ function openChat_(matchId){
   m.unread = false;
   persist();
 
-  document.getElementById('chat-avatar').textContent = m.avatar;
+  renderPhotoAvatar(document.getElementById('chat-avatar'), m.name, 'profile-photo');
   document.getElementById('chat-name').textContent = m.name;
   renderChatThread();
   showView('chat');

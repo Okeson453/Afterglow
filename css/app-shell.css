@@ -31,7 +31,7 @@
 .hook-row{ display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:10px; }
 .hook-btn{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; padding:12px 8px; border-radius:18px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08); color:var(--text-hi); font-size:11px; cursor:pointer; transition:.15s; min-height:86px; }
 .hook-btn:hover{ background:linear-gradient(135deg, rgba(255,255,255,.12), rgba(0,255,200,.08)); border-color:rgba(0,255,200,.24); transform:translateY(-1px); }
-.hook-emoji{ font-size:20px; }
+.hook-icon, .action-icon, .nav-icon{ width:20px; height:20px; object-fit:cover; border-radius:8px; display:block; }
 .hook-label{ font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em; }
 .icon-btn{
   width:38px; height:38px; border-radius:11px; background:var(--navy-800); border:1px solid rgba(255,255,255,.08);

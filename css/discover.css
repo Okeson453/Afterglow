@@ -14,7 +14,9 @@
 .card-art{
   position:absolute; inset:0;
   display:flex; align-items:center; justify-content:center; font-size:92px;
+  background:var(--navy-700);
 }
+.card-art .avatar-photo{ width:100%; height:100%; object-fit:cover; }
 .card-art::after{
   content:""; position:absolute; inset:0;
   background:linear-gradient(180deg, transparent 35%, rgba(6,7,13,.92) 100%);

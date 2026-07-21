@@ -27,7 +27,7 @@ function renderMessagesList(){
 
   list.innerHTML = STATE.matches.map(m=>`
     <div class="msg-card" onclick="openConversation('${m.id}')">
-      <div class="msg-card-avatar">${m.avatar}</div>
+      <div class="msg-card-avatar"><img src="${getAssetPhoto(m.name)}" alt="${m.name}" class="avatar-photo" /></div>
       <div class="msg-card-content">
         <div class="msg-card-name">${m.name}</div>
         <div class="msg-card-preview">${m.lastMsg || '👋 Say hello!'}</div>
@@ -51,7 +51,7 @@ function openConversation(matchId){
   document.getElementById('message-detail').classList.remove('hidden');
 
   // Populate header
-  document.getElementById('msg-avatar').textContent = currentConversation.avatar;
+  renderPhotoAvatar(document.getElementById('msg-avatar'), currentConversation.name, 'profile-photo');
   document.getElementById('msg-name').textContent = currentConversation.name;
   document.getElementById('msg-status').textContent = '🟢 Active';
 

@@ -1,6 +1,6 @@
 <div class="view" id="view-messages">
   <div class="messages-header">
-    <h2>Messages 💌</h2>
+    <h2>Messages</h2>
     <input type="text" class="search-box" placeholder="Search conversations..." id="msg-search" onkeyup="filterMessages()">
   </div>
 
@@ -34,7 +34,7 @@
         onkeypress="handleMsgKeypress(event)"
         class="msg-input"
       >
-      <button class="msg-send-btn" onclick="sendMessage()">↗</button>
+      <button class="msg-send-btn" onclick="sendMessage()">Send</button>
     </div>
   </div>
 
@@ -47,9 +47,9 @@
       </div>
       <div class="modal-body">
         <div style="display:flex; flex-direction:column; gap:8px;">
-          <button class="btn btn-ghost btn-block" onclick="callMatch(); closeModal('convmenu')">📞 Video Call (Gold)</button>
-          <button class="btn btn-ghost btn-block" onclick="reportMatch(); closeModal('convmenu')">🚫 Report</button>
-          <button class="btn btn-danger btn-block" onclick="deleteConversation(); closeModal('convmenu')">🗑️ Delete Chat</button>
+          <button class="btn btn-ghost btn-block" onclick="callMatch(); closeModal('convmenu')">Video Call (Gold)</button>
+          <button class="btn btn-ghost btn-block" onclick="reportMatch(); closeModal('convmenu')">Report</button>
+          <button class="btn btn-danger btn-block" onclick="deleteConversation(); closeModal('convmenu')">Delete Chat</button>
         </div>
       </div>
     </div>

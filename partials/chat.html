@@ -1,19 +1,19 @@
 <div class="view" id="view-chat">
   <div class="chat-header">
-    <button class="icon-btn" onclick="showView('matches')">←</button>
+    <button class="icon-btn" onclick="showView('matches')">Back</button>
     <div class="circ" id="chat-avatar"></div>
     <div class="info">
       <h4 id="chat-name"></h4>
       <p>● Active now</p>
     </div>
     <div style="margin-left:auto; display:flex; gap:8px;">
-      <button class="icon-btn" onclick="reportUser()" title="Report">🚩</button>
-      <button class="icon-btn" onclick="unmatchUser()" title="Unmatch">🚫</button>
+      <button class="icon-btn" onclick="reportUser()" title="Report">Report</button>
+      <button class="icon-btn" onclick="unmatchUser()" title="Unmatch">Unmatch</button>
     </div>
   </div>
   <div class="chat-thread" id="chat-thread"></div>
   <div class="chat-input-bar">
     <input type="text" id="chat-input" placeholder="Send a message…" onkeydown="if(event.key==='Enter')sendMessage()">
-    <button class="send-btn" onclick="sendMessage()">➤</button>
+    <button class="send-btn" onclick="sendMessage()">Send</button>
   </div>
 </div>

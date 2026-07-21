@@ -21,7 +21,7 @@ function renderMatches(){
   STATE.matches.forEach(m=>{
     const b = document.createElement('div');
     b.className = 'match-bubble';
-    b.innerHTML = `<div class="circ ${m.messages.length===0?'new':''}">${m.avatar}</div><p>${m.name}</p>`;
+    b.innerHTML = `<div class="circ ${m.messages.length===0?'new':''}"><img src="${getAssetPhoto(m.name)}" alt="${m.name}" class="avatar-photo" /></div><p>${m.name}</p>`;
     b.onclick = ()=>openChat_(m.id);
     strip.appendChild(b);
 
@@ -29,7 +29,7 @@ function renderMatches(){
     row.className = 'chat-row';
     row.onclick = ()=>openChat_(m.id);
     row.innerHTML = `
-      <div class="circ">${m.avatar}</div>
+      <div class="circ"><img src="${getAssetPhoto(m.name)}" alt="${m.name}" class="avatar-photo" /></div>
       <div class="meta">
         <div class="top"><h4>${m.name}</h4><span class="time mono">${m.time}</span></div>
         <div class="preview">${m.lastMsg || 'Say hi — you matched!'}</div>

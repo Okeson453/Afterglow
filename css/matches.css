@@ -7,7 +7,7 @@
 .match-bubble{ text-align:center; flex-shrink:0; width:68px; }
 .match-bubble .circ{
   width:64px; height:64px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-  font-size:28px; border:2px solid var(--gold-bright); background:var(--navy-800); position:relative;
+  font-size:28px; border:2px solid var(--gold-bright); background:var(--navy-800); position:relative; overflow:hidden;
 }
 .match-bubble .circ.new::before{ content:"NEW"; position:absolute; bottom:-8px; left:50%; transform:translateX(-50%); font-size:8px; background:var(--pink); padding:2px 6px; border-radius:99px; font-weight:800; letter-spacing:.04em; }
 .match-bubble p{ font-size:11px; margin-top:8px; color:var(--text-mid); }
@@ -17,7 +17,7 @@
   border:1px solid rgba(255,255,255,.05); margin-bottom:9px; transition:.15s;
 }
 .chat-row:hover{ border-color:rgba(212,175,55,.3); }
-.chat-row .circ{ width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; background:var(--navy-700); flex-shrink:0; }
+.chat-row .circ{ width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:24px; background:var(--navy-700); flex-shrink:0; overflow:hidden; }
 .chat-row .meta{ flex:1; min-width:0; }
 .chat-row .meta .top{ display:flex; justify-content:space-between; align-items:baseline; }
 .chat-row .meta h4{ font-size:15.5px; font-weight:700; }
