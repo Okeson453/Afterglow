@@ -40,7 +40,7 @@ function getAssetIcon(index){
 function renderPhotoAvatar(target, seed, extraClass=''){
   if(!target) return;
   const src = getAssetPhoto(seed);
-  target.innerHTML = `<img src="${src}" alt="avatar" class="avatar-photo${extraClass ? ' ' + extraClass : ''}" />`;
+  target.innerHTML = `<img loading="lazy" src="${src}" alt="avatar" class="avatar-photo${extraClass ? ' ' + extraClass : ''}" />`;
 }
 
 function defaultState(){

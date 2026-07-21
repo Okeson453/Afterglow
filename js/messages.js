@@ -27,7 +27,7 @@ function renderMessagesList(){
 
   list.innerHTML = STATE.matches.map(m=>`
     <div class="msg-card" onclick="openConversation('${m.id}')">
-      <div class="msg-card-avatar"><img src="${getAssetPhoto(m.name)}" alt="${m.name}" class="avatar-photo" /></div>
+      <div class="msg-card-avatar"><img loading="lazy" src="${getAssetPhoto(m.name)}" alt="${m.name}" class="avatar-photo" /></div>
       <div class="msg-card-content">
         <div class="msg-card-name">${m.name}</div>
         <div class="msg-card-preview">${m.lastMsg || '👋 Say hello!'}</div>
