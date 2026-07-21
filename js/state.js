@@ -37,10 +37,38 @@ function getAssetIcon(index){
   return ICON_ASSETS[idx];
 }
 
+const LAZY_PLACEHOLDER = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+
+function initLazyImages(root=document){
+  const images = root.querySelectorAll ? root.querySelectorAll('img[data-src]') : [];
+  if(!images.length) return;
+
+  if(!('IntersectionObserver' in window)){
+    images.forEach(img=>{
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const img = entry.target;
+      img.src = img.dataset.src;
+      img.removeAttribute('data-src');
+      obs.unobserve(img);
+    });
+  }, { rootMargin: '200px 0px' });
+
+  images.forEach(img=>observer.observe(img));
+}
+
 function renderPhotoAvatar(target, seed, extraClass=''){
   if(!target) return;
   const src = getAssetPhoto(seed);
-  target.innerHTML = `<img loading="lazy" src="${src}" alt="avatar" class="avatar-photo${extraClass ? ' ' + extraClass : ''}" />`;
+  target.innerHTML = `<img loading="lazy" src="${LAZY_PLACEHOLDER}" data-src="${src}" alt="avatar" class="avatar-photo${extraClass ? ' ' + extraClass : ''}" />`;
+  requestAnimationFrame(()=>initLazyImages(target));
 }
 
 function defaultState(){

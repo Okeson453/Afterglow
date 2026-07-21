@@ -29,6 +29,7 @@ async function bootApp(){
   ]);
 
   // Partials are in the DOM now — safe to init each section's module.
+  initLazyImages(document);
   initDiscover();
   initMatches();
   initMessages();

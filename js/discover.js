@@ -34,7 +34,7 @@ function renderDeck(){
     el.style.transform = `translateY(${depthFromTop*8}px) scale(${1 - depthFromTop*0.03})`;
     el.style.zIndex = idx+1;
     el.innerHTML = `
-      <div class="card-art"><img loading="lazy" src="${getAssetPhoto(c.name)}" alt="${c.name}" class="avatar-photo" /></div>
+      <div class="card-art"><img loading="lazy" src="${LAZY_PLACEHOLDER}" data-src="${getAssetPhoto(c.name)}" alt="${c.name}" class="avatar-photo" /></div>
       <div class="stamp like">LIKE</div>
       <div class="stamp pass">PASS</div>
       <div class="card-body">
@@ -46,6 +46,7 @@ function renderDeck(){
     if(depthFromTop===0){ attachDrag(el); }
     deck.appendChild(el);
   });
+  requestAnimationFrame(()=>initLazyImages(deck));
 }
 
 function reloadDeck(){
