@@ -4,8 +4,8 @@ html,body{height:100%;}
 body{
   font-family:'Manrope',sans-serif;
   background:
-    radial-gradient(ellipse 900px 500px at 15% -5%, rgba(212,175,55,.14), transparent 60%),
-    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(47,227,224,.10), transparent 55%),
+    radial-gradient(ellipse 900px 500px at 15% -5%, rgba(184,131,46,.16), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 10%, rgba(107,58,94,.18), transparent 55%),
     var(--navy-950);
   color:var(--text-hi);
   min-height:100vh;
@@ -23,15 +23,15 @@ h1,h2,h3,.display{ font-family:'Bebas Neue',sans-serif; letter-spacing:.03em; }
 .mono{ font-family:'DM Mono',monospace; letter-spacing:.02em; }
 a{color:inherit; text-decoration:none;}
 button{font-family:inherit; cursor:pointer;}
-::selection{background:var(--gold); color:var(--navy-950);}
+::selection{background:var(--amber-500); color:var(--warm-50);}
 
 .brandmark{ display:flex; align-items:center; gap:10px; }
 .brandmark .dot{
   width:10px; height:10px; border-radius:50%;
-  background:linear-gradient(135deg,var(--gold-bright),var(--pink));
-  box-shadow:0 0 16px rgba(212,175,55,.7);
+  background:linear-gradient(135deg,var(--amber-500),var(--plum-500));
+  box-shadow:0 0 16px rgba(184,131,46,.35);
 }
 .brandmark .word{ font-size:22px; letter-spacing:.12em; }
-.brandmark .word b{ color:var(--gold-bright); }
+.brandmark .word b{ color:var(--amber-500); }
 
 #app{ position:relative; z-index:1; min-height:100vh; }

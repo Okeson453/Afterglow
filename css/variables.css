@@ -1,20 +1,36 @@
 /* ============ DESIGN TOKENS ============ */
 :root{
-  --navy-950:#06070d;
-  --navy-900:#0a0d18;
-  --navy-800:#111526;
-  --navy-700:#1a1f38;
-  --navy-600:#232a4a;
-  --gold:#d4af37;
-  --gold-bright:#f0c95c;
-  --cyan:#2fe3e0;
-  --cyan-dim:#1a8f8d;
-  --pink:#ff5d8f;
-  --text-hi:#f5f3ee;
-  --text-mid:#a7acc4;
-  --text-low:#5c6284;
-  --danger:#ff5d6c;
-  --ok:#42e19a;
+  --amber-50:#FFF8F0;
+  --amber-100:#FFECD6;
+  --amber-400:#D4A056;
+  --amber-500:#B8832E;
+  --amber-600:#96641F;
+  --warm-900:#1A1614;
+  --warm-700:#3D3631;
+  --warm-400:#8C8279;
+  --warm-200:#D6CFC7;
+  --warm-50:#F7F4F1;
+  --plum-500:#6B3A5E;
+  --plum-700:#4A2642;
+  --rose-500:#C45B5B;
+  --sage-500:#5B8C6B;
+  --sky-400:#6B9DC4;
+
+  --navy-950:var(--warm-900);
+  --navy-900:#2A2420;
+  --navy-800:var(--warm-700);
+  --navy-700:#4A423D;
+  --navy-600:#5B554F;
+  --gold:var(--amber-400);
+  --gold-bright:var(--amber-500);
+  --cyan:var(--plum-500);
+  --cyan-dim:var(--plum-700);
+  --pink:var(--rose-500);
+  --text-hi:var(--warm-50);
+  --text-mid:var(--warm-200);
+  --text-low:var(--warm-400);
+  --danger:var(--rose-500);
+  --ok:var(--sage-500);
   --radius:18px;
-  --shadow-lift:0 20px 60px -15px rgba(0,0,0,.7);
+  --shadow-lift:0 20px 60px -15px rgba(26,22,20,.65);
 }
